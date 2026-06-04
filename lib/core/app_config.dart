@@ -9,7 +9,7 @@ class AppConfig {
   //static const String baseUrl = 'http://localhost/smart-urban-health-api/public';
   //
   // Emulator Android + Laragon (HP POCO):
-  static const String baseUrl = 'http://10.0.170.38/smart-urban-health-api/public';
+  static const String baseUrl = 'http://10.186.236.137/smart-urban-health-api/public';
   //
   // Python FastAPI ML server (jalankan: uvicorn main:app --relo
   // ad)
@@ -40,7 +40,7 @@ class AppConfig {
 
   // ── Gemini AI Chatbot (ELSA) ─────────────────────────────────
   // Dapatkan API key gratis di: https://aistudio.google.com/apikey
-  static const String geminiApiKey = 'AIzaSyBbEroS_DQQG6tRPHt1Ly2lcLRnblxJqn4';
+  static const String geminiApiKey = 'AQ.Ab8RN6K2X1VLOOabs7Hy5BytwmBjTwvHjZJUxxEB29I57AJw3w';
 
   // ── Timeout ───────────────────────────────────────────────────
   static const Duration requestTimeout = Duration(seconds: 20);

@@ -14,7 +14,7 @@ class MenuGrid extends StatelessWidget {
       icon: Icons.biotech_rounded,
       label: 'Diagnosis\nAI',
       gradient: LinearGradient(
-          colors: [Color(0xFF00D4AA), Color(0xFF00A896)],
+          colors: [Color(0xFF00A896), Color(0xFF00A896)],
           begin: Alignment.topLeft, end: Alignment.bottomRight),
       type: 'diagnosis',
     ),
@@ -22,7 +22,7 @@ class MenuGrid extends StatelessWidget {
       icon: Icons.local_hospital_rounded,
       label: 'Layanan\nPuskesmas',
       gradient: LinearGradient(
-          colors: [Color(0xFF3A7BD5), Color(0xFF00D4AA)],
+          colors: [Color(0xFF3A7BD5), Color(0xFF3A7BD5)],
           begin: Alignment.topLeft, end: Alignment.bottomRight),
       type: 'puskesmas',
     ),
@@ -30,7 +30,7 @@ class MenuGrid extends StatelessWidget {
       icon: Icons.family_restroom_rounded,
       label: 'Layanan\nIbu & Anak',
       gradient: LinearGradient(
-          colors: [Color(0xFF667EEA), Color(0xFF764BA2)],
+          colors: [Color(0xFF667EEA), Color(0xFF667EEA)],
           begin: Alignment.topLeft, end: Alignment.bottomRight),
       type: 'layanan_ibu_anak',
     ),
@@ -38,7 +38,7 @@ class MenuGrid extends StatelessWidget {
       icon: Icons.chat_bubble,
       label: 'Konsultasi\nKesehatan',
       gradient: LinearGradient(
-          colors: [Color(0xFFFF6B35), Color(0xFFFF8E53)],
+          colors: [Color(0xFFFF6B35), Color(0xFFFF6B35)],
           begin: Alignment.topLeft, end: Alignment.bottomRight),
       type: 'bpjs',
     ),
@@ -46,7 +46,7 @@ class MenuGrid extends StatelessWidget {
       icon: Icons.calculate_rounded,
       label: 'Cek\nBMI',
       gradient: LinearGradient(
-          colors: [Color(0xFFF59E0B), Color(0xFFEF4444)],
+          colors: [Color(0xFFF59E0B), Color(0xFFF59E0B)],
           begin: Alignment.topLeft, end: Alignment.bottomRight),
       type: 'health_check',
     ),
@@ -54,7 +54,7 @@ class MenuGrid extends StatelessWidget {
       icon: Icons.psychology_rounded,
       label: 'Kesehatan\nMental',
       gradient: LinearGradient(
-          colors: [Color(0xFF8B5CF6), Color(0xFF6C63FF)],
+          colors: [Color(0xFF8B5CF6), Color(0xFF8B5CF6)],
           begin: Alignment.topLeft, end: Alignment.bottomRight),
       type: 'mental',
     ),
@@ -62,7 +62,7 @@ class MenuGrid extends StatelessWidget {
       icon: Icons.bloodtype,
       label: 'Kesehatan\nDarah',
       gradient: LinearGradient(
-          colors: [Color(0xFFEC4899), Color(0xFFF43F5E)],
+          colors: [Color(0xFFF43F5E), Color(0xFFF43F5E)],
           begin: Alignment.topLeft, end: Alignment.bottomRight),
       type: 'darah',
     ),

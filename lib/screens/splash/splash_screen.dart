@@ -59,8 +59,9 @@ class _SplashScreenState extends State<SplashScreen>
     );
     _logoOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
-          parent: _logoController,
-          curve: const Interval(0.0, 0.5, curve: Curves.easeIn)),
+        parent: _logoController,
+        curve: const Interval(0.0, 0.5, curve: Curves.easeIn),
+      ),
     );
 
     // Text slide up
@@ -68,15 +69,14 @@ class _SplashScreenState extends State<SplashScreen>
       vsync: this,
       duration: const Duration(milliseconds: 600),
     );
-    _textOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _textController, curve: Curves.easeOut),
-    );
-    _textSlide = Tween<Offset>(
-      begin: const Offset(0, 0.4),
-      end: Offset.zero,
-    ).animate(
-      CurvedAnimation(parent: _textController, curve: Curves.easeOutCubic),
-    );
+    _textOpacity = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _textController, curve: Curves.easeOut));
+    _textSlide = Tween<Offset>(begin: const Offset(0, 0.4), end: Offset.zero)
+        .animate(
+          CurvedAnimation(parent: _textController, curve: Curves.easeOutCubic),
+        );
 
     // Pulse ring
     _pulseController = AnimationController(
@@ -92,9 +92,10 @@ class _SplashScreenState extends State<SplashScreen>
       vsync: this,
       duration: const Duration(milliseconds: 500),
     );
-    _exitOpacity = Tween<double>(begin: 1.0, end: 0.0).animate(
-      CurvedAnimation(parent: _exitController, curve: Curves.easeIn),
-    );
+    _exitOpacity = Tween<double>(
+      begin: 1.0,
+      end: 0.0,
+    ).animate(CurvedAnimation(parent: _exitController, curve: Curves.easeIn));
 
     _startSequence();
   }
@@ -158,36 +159,36 @@ class _SplashScreenState extends State<SplashScreen>
               height: size.height,
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
                   colors: [
-                    Color(0xFF061020),
-                    Color(0xFF0A1628),
-                    Color(0xFF0D2140),
+                    Color(0xFFFFFFFF),
+                    Color(0xFFF0F9F7),
+                    Color(0xFFE8F5F1),
                   ],
-                  stops: [0.0, 0.5, 1.0],
+                  stops: [0.0, 0.6, 1.0],
                 ),
               ),
               child: Stack(
                 children: [
                   // ── Decorative circles ──
                   _DecorCircle(
-                    size: 360,
-                    top: -80,
-                    right: -100,
-                    color: AppTheme.primaryTeal.withOpacity(0.07),
+                    size: 450,
+                    top: -180,
+                    right: -160,
+                    color: const Color(0xFF00C9A7).withOpacity(0.08),
                   ),
                   _DecorCircle(
-                    size: 260,
-                    bottom: -60,
-                    left: -80,
-                    color: AppTheme.accentBlue.withOpacity(0.08),
+                    size: 350,
+                    bottom: -140,
+                    left: -150,
+                    color: const Color(0xFF0A1628).withOpacity(0.04),
                   ),
                   _DecorCircle(
-                    size: 140,
-                    top: size.height * 0.35,
-                    right: 30,
-                    color: AppTheme.primaryTeal.withOpacity(0.05),
+                    size: 180,
+                    top: size.height * 0.3,
+                    right: -50,
+                    color: const Color(0xFF00C9A7).withOpacity(0.05),
                   ),
 
                   // ── Grid dots pattern ──
@@ -264,66 +265,115 @@ class _LogoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 110,
-      height: 110,
+      width: 160,
+      height: 160,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFF00D4AA), Color(0xFF00A896)],
+          colors: [Color(0xFF00C9A7), Color(0xFF00B89B), Color(0xFF009B87)],
         ),
         boxShadow: [
           BoxShadow(
-            color: AppTheme.primaryTeal.withOpacity(0.5),
-            blurRadius: 40,
-            spreadRadius: 8,
+            color: const Color(0xFF00C9A7).withOpacity(0.35),
+            blurRadius: 60,
+            spreadRadius: 15,
           ),
           BoxShadow(
-            color: AppTheme.primaryTeal.withOpacity(0.2),
-            blurRadius: 80,
-            spreadRadius: 20,
+            color: const Color(0xFF00C9A7).withOpacity(0.15),
+            blurRadius: 120,
+            spreadRadius: 40,
+          ),
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 40,
+            offset: const Offset(0, 15),
           ),
         ],
       ),
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // Outer ring
+          // Outer decorative ring
           Container(
-            width: 110,
-            height: 110,
+            width: 160,
+            height: 160,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: Colors.white.withOpacity(0.2),
-                width: 1.5,
+                color: Colors.white.withOpacity(0.25),
+                width: 2.5,
               ),
             ),
           ),
-          // Icon
-          const Icon(
-            Icons.health_and_safety_rounded,
-            color: Colors.white,
-            size: 52,
+
+          // Middle ring - accent
+          Container(
+            width: 145,
+            height: 145,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: Colors.white.withOpacity(0.12),
+                width: 1,
+              ),
+            ),
           ),
-          // AI dot
+
+          // Icon container dengan background
+          Container(
+            width: 120,
+            height: 120,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white.withOpacity(0.95),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFF00C9A7).withOpacity(0.2),
+                  blurRadius: 30,
+                  spreadRadius: 5,
+                ),
+              ],
+            ),
+            child: ClipOval(
+              child: Image.asset(
+                'assets/images/logo_puskesmas.png',
+                fit: BoxFit.cover,
+                filterQuality: FilterQuality.high,
+              ),
+            ),
+          ),
+
+          // Premium badge
           Positioned(
-            bottom: 18,
-            right: 18,
+            bottom: 8,
+            right: 8,
             child: Container(
-              width: 16,
-              height: 16,
+              width: 32,
+              height: 32,
               decoration: BoxDecoration(
-                color: AppTheme.accentOrange,
+                gradient: const LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xFFFF6B5B), Color(0xFFFF5E42)],
+                ),
                 shape: BoxShape.circle,
-                border: Border.all(color: Colors.white, width: 2),
+                border: Border.all(color: Colors.white, width: 3),
                 boxShadow: [
                   BoxShadow(
-                    color: AppTheme.accentOrange.withOpacity(0.6),
-                    blurRadius: 8,
+                    color: const Color(0xFFFF6B5B).withOpacity(0.5),
+                    blurRadius: 16,
+                    spreadRadius: 3,
                   ),
                 ],
+              ),
+              child: const Center(
+                child: Icon(
+                  Icons.verified_rounded,
+                  color: Colors.white,
+                  size: 18,
+                ),
               ),
             ),
           ),
@@ -344,54 +394,59 @@ class _BrandText extends StatelessWidget {
             style: TextStyle(fontFamily: 'Poppins'),
             children: [
               TextSpan(
-                text: 'Smart Urban\n',
+                text: 'PuskesmasKU\n',
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 32,
                   fontWeight: FontWeight.w800,
-                  color: Colors.white,
-                  letterSpacing: -0.5,
-                  height: 1.1,
+                  color: Color(0xFF0A1628),
+                  letterSpacing: -0.8,
+                  height: 1.2,
                 ),
               ),
               TextSpan(
-                text: 'Health ',
+                text: 'Health AI',
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 32,
                   fontWeight: FontWeight.w800,
-                  color: Colors.white,
-                  letterSpacing: -0.5,
-                  height: 1.1,
-                ),
-              ),
-              TextSpan(
-                text: 'AI',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w800,
-                  color: AppTheme.primaryTeal,
-                  letterSpacing: -0.5,
-                  height: 1.1,
+                  color: Color(0xFF00C9A7),
+                  letterSpacing: -0.8,
+                  height: 1.2,
                 ),
               ),
             ],
           ),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 16),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.06),
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.white.withOpacity(0.1)),
+            gradient: LinearGradient(
+              colors: [
+                const Color(0xFF00C9A7).withOpacity(0.1),
+                const Color(0xFF00C9A7).withOpacity(0.05),
+              ],
+            ),
+            borderRadius: BorderRadius.circular(28),
+            border: Border.all(
+              color: const Color(0xFF00C9A7).withOpacity(0.4),
+              width: 1.5,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFF00C9A7).withOpacity(0.1),
+                blurRadius: 20,
+                offset: const Offset(0, 4),
+              ),
+            ],
           ),
           child: const Text(
-            'Prediksi · Prioritas · Puskesmas',
+            'AI-Powered Healthcare Intelligence',
             style: TextStyle(
               fontFamily: 'Poppins',
-              fontSize: 12,
-              color: Colors.white60,
-              fontWeight: FontWeight.w500,
-              letterSpacing: 0.8,
+              fontSize: 14,
+              color: Color(0xFF00C9A7),
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.2,
             ),
           ),
         ),
@@ -417,9 +472,10 @@ class _LoadingBarState extends State<_LoadingBar>
       vsync: this,
       duration: const Duration(milliseconds: 2000),
     )..forward();
-    _progress = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut),
-    );
+    _progress = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut));
   }
 
   @override
@@ -435,25 +491,36 @@ class _LoadingBarState extends State<_LoadingBar>
         AnimatedBuilder(
           animation: _progress,
           builder: (_, __) => Container(
-            width: 160,
-            height: 3,
+            width: 200,
+            height: 5,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.08),
+              color: const Color(0xFF00C9A7).withOpacity(0.1),
               borderRadius: BorderRadius.circular(4),
+              border: Border.all(
+                color: const Color(0xFF00C9A7).withOpacity(0.2),
+                width: 0.8,
+              ),
             ),
             child: FractionallySizedBox(
               alignment: Alignment.centerLeft,
               widthFactor: _progress.value,
               child: Container(
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [AppTheme.primaryTeal, Color(0xFF00FFC8)],
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      const Color(0xFF00C9A7),
+                      const Color(0xFF00E0BA),
+                      const Color(0xFF00C9A7).withOpacity(0.85),
+                    ],
                   ),
                   borderRadius: BorderRadius.circular(4),
                   boxShadow: [
                     BoxShadow(
-                      color: AppTheme.primaryTeal.withOpacity(0.6),
-                      blurRadius: 6,
+                      color: const Color(0xFF00C9A7).withOpacity(0.6),
+                      blurRadius: 16,
+                      spreadRadius: 2,
                     ),
                   ],
                 ),
@@ -461,15 +528,15 @@ class _LoadingBarState extends State<_LoadingBar>
             ),
           ),
         ),
-        const SizedBox(height: 14),
+        const SizedBox(height: 18),
         Text(
-          'Memuat sistem AI...',
+          'Initializing Healthcare Platform...',
           style: TextStyle(
             fontFamily: 'Poppins',
-            fontSize: 11,
-            color: Colors.white.withOpacity(0.35),
-            fontWeight: FontWeight.w400,
-            letterSpacing: 0.5,
+            fontSize: 12,
+            color: const Color(0xFF0A1628).withOpacity(0.5),
+            fontWeight: FontWeight.w500,
+            letterSpacing: 0.3,
           ),
         ),
       ],
@@ -510,13 +577,13 @@ class _DotPatternPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.white.withOpacity(0.025)
+      ..color = const Color(0xFF00C9A7).withOpacity(0.06)
       ..strokeCap = StrokeCap.round;
 
-    const spacing = 28.0;
+    const spacing = 32.0;
     for (double x = 0; x < size.width; x += spacing) {
       for (double y = 0; y < size.height; y += spacing) {
-        canvas.drawCircle(Offset(x, y), 1.5, paint);
+        canvas.drawCircle(Offset(x, y), 1.2, paint);
       }
     }
   }
